@@ -4,9 +4,10 @@ import (
 	"net/http"
 )
 
+//Handler to get the url values, using the value to serve the files
 func urlHandler(w http.ResponseWriter, r *http.Request) {
-	back := r.URL.Query().Get("back")
-	song := r.URL.Query().Get("song")
+	back := r.URL.Query().Get("back") //Allocated for backgrounds
+	song := r.URL.Query().Get("song") //Allocated for songs
 	if len(back) != 0 {
 		http.ServeFile(w, r, "assets/backgrounds/"+back)
 	} else if len(song) != 0 {
@@ -18,8 +19,8 @@ func urlHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/assets", urlHandler)
-	http.ListenAndServe(":1000", nil)
+	http.HandleFunc("/assets", urlHandler) //Set /assets as route
+	http.ListenAndServe(":1000", nil)      //Listens on port 1000 | CUSTOMISE HERE
 }
 
 //test
