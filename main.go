@@ -22,5 +22,3 @@ func main() {
 	http.HandleFunc("/assets", urlHandler) //Set /assets as route
 	http.ListenAndServe(":1000", nil)      //Listens on port 1000 | CUSTOMISE HERE
 }
-
-//test
